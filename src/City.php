@@ -49,6 +49,19 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM cities;");
         }
+
+        static function find($input_id)
+        {
+            $returned_cities = City::getAll();
+            foreach($returned_cities as $returned_city)
+            {
+                $returned_id = $returned_city->getId();
+                if($returned_id == $input_id)
+                {
+                    return $returned_city;
+                }
+            }
+        }
     }
 
 ?>
