@@ -62,6 +62,11 @@
                 }
             }
         }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM cities WHERE id = {$this->getId()};");
+        }
     }
 
 ?>

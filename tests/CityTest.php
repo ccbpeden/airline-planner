@@ -93,5 +93,20 @@
             $this->assertEquals($test_city, $result);
         }
 
+        function test_delete()
+        {
+            $name = "Portland";
+            $test_city = new City($name);
+            $test_city->save();
+            $id=$test_city->getId();
+            $name2 = "Brooklyn";
+            $test_city2 = new City($name2);
+            $test_city2->save();
+
+            $test_city->delete();
+            $result = City::getAll();
+
+            $this->assertEquals([$test_city2], $result);
+        }
     }
 ?>
