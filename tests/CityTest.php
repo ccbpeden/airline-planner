@@ -16,7 +16,7 @@
     {
         protected function tearDown()
         {
-            // City::deleteAll();
+            City::deleteAll();
             // Flight::deleteAll();
         }
 
@@ -59,6 +59,24 @@
 
             //Assert
             $this->assertEquals(true, is_numeric($result));
+        }
+
+        function test_saveGetAll()
+        {
+
+            $name = "Portland";
+            $id = 1;
+            $test_city = new City($name, $id);
+            $test_city->save();
+            $name2 = "Brooklyn";
+            $id2 = 2;
+            $test_city2 = new City($name2, $id2);
+            $test_city2->save();
+
+            $result = City::getAll();
+            var_dump($result);
+
+            $this->assertEquals([$test_city, $test_city2], $result);
         }
 
     }
